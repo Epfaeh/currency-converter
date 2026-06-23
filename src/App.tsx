@@ -1,4 +1,6 @@
 import { useRates } from './hooks/useRates'
+import RatesList from './components/RatesList'
+import Converter from './components/Converter'
 
 function App() {
   const { data, isPending, isError } = useRates()
@@ -9,16 +11,8 @@ function App() {
   return (
     <div>
       <h1>CNB exchange rates</h1>
-      <p>
-        {data.date} (#{data.sequence})
-      </p>
-      <ul>
-        {data.rates.map((rate) => (
-          <li key={rate.code}>
-            {rate.amount} {rate.code} ({rate.currency}) = {rate.rate} CZK
-          </li>
-        ))}
-      </ul>
+      <Converter rates={data.rates} />
+      <RatesList date={data.date} rates={data.rates} />
     </div>
   )
 }
