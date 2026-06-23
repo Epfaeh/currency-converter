@@ -1,3 +1,5 @@
+import { parseRates } from "../lib/parseRates";
+
 const CNB_URL =
   "https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt";
 
@@ -10,11 +12,15 @@ export async function GET(): Promise<Response> {
     }
 
     const text = await cnbRes.text();
+    const data = parseRates(text);
 
-    return new Response(text, {
+    if (data.rates.length === 0) {
+      return Response.json({ error: "Unexpected CNB response" }, { status: 502 });
+    }
+
+    return Response.json(data, {
       headers: {
-        "content-type": "text/plain; charset=utf-8",
-        "cache-control": "no-store",
+        "cache-control": "s-maxage=60",
       },
     });
   } catch (err) {
