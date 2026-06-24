@@ -1,4 +1,4 @@
-import { parseRates } from "../lib/parseRates";
+import { parseRates } from "../lib/parseRates.js";
 
 const CNB_URL =
   "https://www.cnb.cz/en/financial-markets/foreign-exchange-market/central-bank-exchange-rate-fixing/central-bank-exchange-rate-fixing/daily.txt";

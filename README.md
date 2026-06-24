@@ -3,7 +3,7 @@
 Fetches the latest Czech National Bank (CNB) foreign-exchange rates, lists them,
 and converts a CZK amount into a selected currency in real time.
 
-_Live: `<URL to be added>`_
+_Live: https://currency-converter-lemon-eta.vercel.app_
 
 ## Tech stack
 
