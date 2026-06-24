@@ -46,7 +46,7 @@ function Converter({ rates }: ConverterProps) {
           ))}
         </Select>
       </Field>
-      <Result>{formatted}</Result>
+      <Result aria-live="polite">{formatted}</Result>
     </Card>
   )
 }

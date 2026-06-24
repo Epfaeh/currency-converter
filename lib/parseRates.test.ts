@@ -52,4 +52,26 @@ Japan|yen|100|JPY|14.823
     const { rates } = parseRates(raw);
     expect(rates).toHaveLength(2);
   });
+
+  it('parses the real CNB format with CRLF line endings', () => {
+    // CNB serves the file with \r\n; header and rows must still parse.
+    const raw = SAMPLE.replace(/\n/g, '\r\n');
+    const { date, sequence, rates } = parseRates(raw);
+    expect(date).toBe('23 Jun 2026');
+    expect(sequence).toBe(120);
+    expect(rates).toHaveLength(3);
+    expect(rates[2].code).toBe('JPY');
+    expect(rates[2].amount).toBe(100);
+  });
+
+  it('skips a 5-field row with an empty numeric cell', () => {
+    const raw = `23 Jun 2026 #1
+Country|Currency|Amount|Code|Rate
+Nowhere|nothing||XXX|
+United States|dollar|1|USD|21.543
+`;
+    const { rates } = parseRates(raw);
+    expect(rates).toHaveLength(1);
+    expect(rates[0].code).toBe('USD');
+  });
 });
