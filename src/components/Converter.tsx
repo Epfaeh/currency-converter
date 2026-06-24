@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Rate } from '../../lib/types'
 import { convert } from '../../lib/convert'
+import { currencyFmt } from '../../lib/format'
 import { Card, Field, Label, Input, Select, Result } from './ui'
 
 interface ConverterProps {
@@ -17,12 +18,7 @@ function Converter({ rates }: ConverterProps) {
     amount === '' || Number.isNaN(czk) ? null : convert(czk, selectedRate)
 
   const formatted =
-    result === null
-      ? ''
-      : new Intl.NumberFormat('cs-CZ', {
-          style: 'currency',
-          currency: selectedRate.code,
-        }).format(result)
+    result === null ? '' : currencyFmt(selectedRate.code).format(result)
 
   return (
     <Card>

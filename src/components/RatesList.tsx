@@ -1,7 +1,6 @@
 import type { Rate } from '../../lib/types'
+import { czk } from '../../lib/format'
 import { Card, Table, NumTh, Num } from './ui'
-
-const czk = new Intl.NumberFormat('cs-CZ', { style: 'currency', currency: 'CZK' })
 
 interface RatesListProps {
   date: string

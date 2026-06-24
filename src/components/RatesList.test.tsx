@@ -1,27 +1,9 @@
 // @vitest-environment jsdom
-import { describe, it, expect, afterEach } from 'vitest'
-import { render, screen, cleanup } from '../test-utils'
-
-// No vitest `globals`, so RTL's auto-cleanup isn't registered — do it explicitly
-// to keep each test's render isolated.
-afterEach(cleanup)
+import { describe, it, expect } from 'vitest'
+import { render, screen } from '../test-utils'
 import RatesList from './RatesList'
-import type { Rate } from '../../lib/types'
+import { USD, JPY } from '../test/fixtures'
 
-const USD: Rate = {
-  country: 'United States',
-  currency: 'dollar',
-  amount: 1,
-  code: 'USD',
-  rate: 21.543,
-}
-const JPY: Rate = {
-  country: 'Japan',
-  currency: 'yen',
-  amount: 100,
-  code: 'JPY',
-  rate: 14.823,
-}
 const rates = [USD, JPY]
 
 // Build the expected CZK string the same way the component does, so the
