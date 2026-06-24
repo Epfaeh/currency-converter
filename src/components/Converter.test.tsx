@@ -4,14 +4,13 @@ import { render, screen } from '../test-utils'
 import userEvent from '@testing-library/user-event'
 import Converter from './Converter'
 import { convert } from '../../lib/convert'
+import { currencyFmt } from '../../lib/format'
 import { USD, JPY } from '../test/fixtures'
 
 const rates = [USD, JPY]
 
-// Build the expected string the same way the component does, so the assertion
-// is robust to locale-specific formatting (cs-CZ separators, currency symbol).
-const format = (value: number, code: string) =>
-  new Intl.NumberFormat('cs-CZ', { style: 'currency', currency: code }).format(value)
+// Format via the same helper the component uses, so assertions match its output.
+const format = (value: number, code: string) => currencyFmt(code).format(value)
 
 describe('Converter', () => {
   it('defaults the currency to the first rate and shows no result yet', () => {

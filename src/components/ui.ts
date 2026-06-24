@@ -90,8 +90,6 @@ export const Table = styled.table`
   }
 `
 
-// `&&` doubles class specificity so these win over the Table's
-// descendant `th, td { text-align: left }` rule.
 export const NumTh = styled.th`
   && {
     text-align: right;

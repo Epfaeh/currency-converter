@@ -2,14 +2,10 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '../test-utils'
 import RatesList from './RatesList'
+import { czk } from '../../lib/format'
 import { USD, JPY } from '../test/fixtures'
 
 const rates = [USD, JPY]
-
-// Build the expected CZK string the same way the component does, so the
-// assertion is robust to locale-specific formatting.
-const czk = (value: number) =>
-  new Intl.NumberFormat('cs-CZ', { style: 'currency', currency: 'CZK' }).format(value)
 
 describe('RatesList', () => {
   it('renders the heading with the date', () => {
@@ -30,6 +26,6 @@ describe('RatesList', () => {
     expect(jpy).toContain('100')
     expect(jpy).toContain('JPY')
     expect(jpy).toContain('yen')
-    expect(jpy).toContain(czk(14.823))
+    expect(jpy).toContain(czk.format(14.823))
   })
 })

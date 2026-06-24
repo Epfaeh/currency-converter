@@ -1,6 +1,3 @@
-// Number/currency formatting, instantiated once and reused across renders.
-
-// Rates are quoted in CZK, so this single instance covers the rates table.
 export const czk = new Intl.NumberFormat('cs-CZ', {
   style: 'currency',
   currency: 'CZK',
