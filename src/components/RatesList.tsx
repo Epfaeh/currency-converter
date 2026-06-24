@@ -7,7 +7,7 @@ interface RatesListProps {
   rates: Rate[]
 }
 
-function RatesList({ date, rates }: RatesListProps) {
+export function RatesList({ date, rates }: RatesListProps) {
   return (
     <Card>
       <h2>Rates as of {date}</h2>
@@ -34,5 +34,3 @@ function RatesList({ date, rates }: RatesListProps) {
     </Card>
   )
 }
-
-export default RatesList

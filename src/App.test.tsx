@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ThemeProvider } from 'styled-components'
 import { setupServer } from 'msw/node'
 import { http, HttpResponse } from 'msw'
-import App from './App'
+import { App } from './App'
 import { theme } from './theme'
 import { USD, JPY } from './test/fixtures'
 

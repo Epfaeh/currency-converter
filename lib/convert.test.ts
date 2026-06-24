@@ -1,6 +1,22 @@
 import { describe, it, expect } from 'vitest';
 import { convert } from './convert';
-import { USD, JPY } from '../src/test/fixtures';
+import type { Rate } from './types';
+
+const USD: Rate = {
+  country: 'United States',
+  currency: 'dollar',
+  amount: 1,
+  code: 'USD',
+  rate: 21.543,
+};
+
+const JPY: Rate = {
+  country: 'Japan',
+  currency: 'yen',
+  amount: 100,
+  code: 'JPY',
+  rate: 14.823,
+};
 
 describe('convert', () => {
   it('converts at an amount = 1 currency', () => {

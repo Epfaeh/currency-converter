@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '../test-utils'
-import RatesList from './RatesList'
+import { RatesList } from './RatesList'
 import { czk } from '../../lib/format'
 import { USD, JPY } from '../test/fixtures'
 

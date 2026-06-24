@@ -8,7 +8,7 @@ interface ConverterProps {
   rates: Rate[]
 }
 
-function Converter({ rates }: ConverterProps) {
+export function Converter({ rates }: ConverterProps) {
   const [amount, setAmount] = useState('')
   const [code, setCode] = useState(rates[0].code)
 
@@ -50,5 +50,3 @@ function Converter({ rates }: ConverterProps) {
     </Card>
   )
 }
-
-export default Converter

@@ -1,9 +1,9 @@
 import { useRates } from './hooks/useRates'
-import RatesList from './components/RatesList'
-import Converter from './components/Converter'
+import { RatesList } from './components/RatesList'
+import { Converter } from './components/Converter'
 import { Container, Stack, Title } from './components/ui'
 
-function App() {
+export function App() {
   const { data, isPending, isError } = useRates()
 
   if (isPending) return <Container>Loading rates…</Container>
@@ -20,5 +20,3 @@ function App() {
     </Container>
   )
 }
-
-export default App
