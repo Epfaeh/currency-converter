@@ -12,6 +12,9 @@ Vite · Vitest · Vercel · Vercel Functions
 
 ## Run locally
 
+Requires the [Vercel CLI](https://vercel.com/docs/cli) (`pnpm add -g vercel`),
+or run it one-off with `pnpm dlx vercel dev`.
+
 ```sh
 pnpm install
 vercel dev      # ⚠️ NOT `vite dev` — vite won't serve the /api proxy
