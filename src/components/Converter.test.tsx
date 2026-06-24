@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect, afterEach } from 'vitest'
-import { render, screen, cleanup } from '@testing-library/react'
+import { render, screen, cleanup } from '../test-utils'
 import userEvent from '@testing-library/user-event'
 
 // No vitest `globals`, so RTL's auto-cleanup isn't registered — do it explicitly

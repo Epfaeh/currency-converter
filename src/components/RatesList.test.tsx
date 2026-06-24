@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { describe, it, expect, afterEach } from 'vitest'
-import { render, screen, cleanup } from '@testing-library/react'
+import { render, screen, cleanup } from '../test-utils'
 
 // No vitest `globals`, so RTL's auto-cleanup isn't registered — do it explicitly
 // to keep each test's render isolated.
@@ -35,14 +35,16 @@ describe('RatesList', () => {
     expect(screen.getByRole('heading').textContent).toBe('Rates as of 23 Jun 2026')
   })
 
-  it('renders one list item per rate', () => {
+  it('renders one row per rate', () => {
     render(<RatesList date="23 Jun 2026" rates={rates} />)
-    expect(screen.getAllByRole('listitem')).toHaveLength(2)
+    // +1 for the header row
+    expect(screen.getAllByRole('row')).toHaveLength(rates.length + 1)
   })
 
   it('shows amount, code, currency and CZK rate, incl. a per-100 currency', () => {
     render(<RatesList date="23 Jun 2026" rates={rates} />)
-    const jpy = screen.getAllByRole('listitem')[1].textContent ?? ''
+    // Skip the header row; JPY is the second data row.
+    const jpy = screen.getAllByRole('row')[2].textContent ?? ''
     expect(jpy).toContain('100')
     expect(jpy).toContain('JPY')
     expect(jpy).toContain('yen')

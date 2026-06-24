@@ -1,4 +1,5 @@
 import type { Rate } from '../../lib/types'
+import { Card, Table, NumTh, Num } from './ui'
 
 const czk = new Intl.NumberFormat('cs-CZ', { style: 'currency', currency: 'CZK' })
 
@@ -9,16 +10,29 @@ interface RatesListProps {
 
 function RatesList({ date, rates }: RatesListProps) {
   return (
-    <div>
+    <Card>
       <h2>Rates as of {date}</h2>
-      <ul>
-        {rates.map((rate) => (
-          <li key={rate.code}>
-            {rate.amount} {rate.code} ({rate.currency}) = {czk.format(rate.rate)}
-          </li>
-        ))}
-      </ul>
-    </div>
+      <Table>
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Currency</th>
+            <NumTh>Amount</NumTh>
+            <NumTh>Rate</NumTh>
+          </tr>
+        </thead>
+        <tbody>
+          {rates.map((rate) => (
+            <tr key={rate.code}>
+              <td>{rate.code}</td>
+              <td>{rate.currency}</td>
+              <Num>{rate.amount}</Num>
+              <Num>{czk.format(rate.rate)}</Num>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Card>
   )
 }
 

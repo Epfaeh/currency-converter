@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { Rate } from '../../lib/types'
 import { convert } from '../../lib/convert'
+import { Card, Field, Label, Input, Select, Result } from './ui'
 
 interface ConverterProps {
   rates: Rate[]
@@ -24,20 +25,20 @@ function Converter({ rates }: ConverterProps) {
         }).format(result)
 
   return (
-    <div>
+    <Card>
       <h2>Convert</h2>
-      <div>
-        <label htmlFor="amount">Amount in CZK</label>
-        <input
+      <Field>
+        <Label htmlFor="amount">Amount in CZK</Label>
+        <Input
           id="amount"
           type="number"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />
-      </div>
-      <div>
-        <label htmlFor="currency">Currency</label>
-        <select
+      </Field>
+      <Field>
+        <Label htmlFor="currency">Currency</Label>
+        <Select
           id="currency"
           value={code}
           onChange={(e) => setCode(e.target.value)}
@@ -47,10 +48,10 @@ function Converter({ rates }: ConverterProps) {
               {rate.code} — {rate.currency}
             </option>
           ))}
-        </select>
-      </div>
-      <p>{formatted}</p>
-    </div>
+        </Select>
+      </Field>
+      <Result>{formatted}</Result>
+    </Card>
   )
 }
 
