@@ -64,6 +64,7 @@ export const Result = styled.p`
   font-size: ${({ theme }) => theme.fontSize.xl};
   font-weight: 700;
   color: ${({ theme }) => theme.colors.accent};
+  overflow-wrap: anywhere;
 `
 
 export const Stack = styled.div`
